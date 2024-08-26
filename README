@@ -1,0 +1,35 @@
+CRUD SERVICES FOR USER INFORMATION USING GOLANG
+
+Database Used : postgress (Run a postgress docker image to create and access db for data manipulation)
+
+POST
+Request: curl -X POST http://localhost:8081/users -H "Content-Type: application/json" -d '{"username":"jacob","password":"jacob@1234", "active":true}'      
+Response: {"message":"User created successfully","username":"jacob"}
+
+GET ALL USERS
+Request: curl http://localhost:8081/users               
+
+Response: [{"username":"john","password":"john@1234","active":false},{"username":"jacob","password":"jacob@1234","active":true}]
+
+
+GET A SINGLE USER INFO WITH RESPECT TO USERNAME
+Request: curl http://localhost:8081/users/john          
+
+Response: {"username":"john","password":"john@1234","active":false}
+
+
+UPDATE A USER WITH RESPECT TO USERNAME
+Request: curl -curl -X PUT http://localhost:8081/users/jacob -H "Content-Type: application/json" -d '{"username":"jacob","password":"jacob@123", "active":true}'
+
+
+Response: {"message":"User updated successfully","username":"jacob"}
+
+Request: curl http://localhost:8081/users 
+
+Response: [{"username":"jacob","password":"jacob@123","active":true},{"username":"john","password":"john@1234","active":false}]
+
+
+DELETE A USER
+Request: curl -X DELETE http://localhost:8081/users/john
+
+Response: {"message":"User deleted"}
